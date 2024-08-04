@@ -5,12 +5,16 @@ import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import org.hamcrest.Matchers;
+import questions.ValidarPDF;
 import task.AbrirPaginaWeb;
 import task.NavegarAPDF;
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 
 public class PdfProhibiciones {
@@ -31,7 +35,7 @@ public class PdfProhibiciones {
     }
     @Entonces("valido que se pueda descargar correctamente el pdf de prohibiciones")
     public void validoQueSePuedaDescargarCorrectamenteElPdfDeProhibiciones() {
-
+        theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidarPDF.queSeaElDeProhibiciones(), Matchers.is(true)));
     }
 
 }
